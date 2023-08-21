@@ -10,6 +10,7 @@ async def hello(msg):
 	embed.set_image(url="https://i.pinimg.com/originals/aa/01/90/aa019023148ed37537f9d22fcbe53041.gif")
 	await msg.channel.send(embed = embed)
 
+
 async def flipcoin(msg):
 	i = random.randint(1,2)
 	if i==1: headsTails = "Heads!"
@@ -20,6 +21,7 @@ async def flipcoin(msg):
 	)
 	embed.set_image(url="https://media.giphy.com/media/gVROkjyShPnos/giphy.gif")
 	await msg.channel.send(embed = embed)
+
 
 async def insult(msg):
 	insults = [
@@ -39,6 +41,7 @@ async def insult(msg):
 		colour = discord.Colour.magenta()
 	)
 	await msg.channel.send(embed = embed)
+
 
 async def askreggie(msg):
 	responses = [

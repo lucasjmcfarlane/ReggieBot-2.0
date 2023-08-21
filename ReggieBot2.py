@@ -28,8 +28,4 @@ async def on_message(msg):
 	# elif msg.content.startswith("r pingspam"): await e.pingspam(msg)
 	# elif msg.content.startswith("r reddit"): await e.reddit(msg)
 
-
-
-
-
 client.run('')
