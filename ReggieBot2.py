@@ -1,6 +1,12 @@
 import discord
 import reggieEmbeds as e
 
+#.env loading, mainly for token
+import os
+from dotenv import load_dotenv
+load_dotenv()
+secretToken = os.getenv('secretToken')
+
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
@@ -28,4 +34,4 @@ async def on_message(msg):
 	# elif msg.content.startswith("r pingspam"): await e.pingspam(msg)
 	# elif msg.content.startswith("r reddit"): await e.reddit(msg)
 
-client.run('')
+client.run(secretToken)
