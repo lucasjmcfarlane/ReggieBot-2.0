@@ -1,37 +1,27 @@
 import discord
-import reggieEmbeds as e
-
-#.env loading, mainly for token
-import os
+from discord.ext import commands
+from cogwatch import watch
 from dotenv import load_dotenv
-load_dotenv()
-secretToken = os.getenv('secretToken')
+import os
+import asyncio
 
-intents = discord.Intents.default()
-intents.message_content = True
-client = discord.Client(intents=intents)
+class ReggieBot(commands.Bot):
+    def __init__(self):
+        super().__init__(command_prefix="r ", intents=discord.Intents.all())
 
-@client.event
-async def on_ready():
-	print(f"We have logged in as {client.user}")
+    @watch(path='ext', preload=True)
+    async def on_ready(self):
+        print('Bot ready.')
 
-@client.event
-async def on_message(msg):
-	if msg.author == client.user: return
-	msg.content = msg.content.lower()
-	if msg.content.startswith("r hello"): await e.hello(msg)
-	elif msg.content.startswith("r flipcoin"): await e.flipcoin(msg)
-	elif msg.content.startswith("r insult"): await e.insult(msg)
-	elif msg.content.startswith("r askreggie"): await e.askreggie(msg)
-	# elif msg.content.startswith("r msgfromreggie"): await e.msgfromreggie(msg)
-	# elif msg.content.startswith("r lovecalc"): await e.lovecalc(msg)
-	# elif msg.content.startswith("r owo"): await e.owo(msg)
-	# elif msg.content.startswith("r uwu"): await e.uwu(msg)
-	# elif msg.content.startswith("r ppsize"): await e.ppsize(msg)
-	# elif msg.content.startswith("r rate"): await e.rate(msg)
-	# elif msg.content.startswith("r reggiepic"): await e.reggiepic(msg)
-	# elif msg.content.startswith("r clear"): await e.clear(msg)
-	# elif msg.content.startswith("r pingspam"): await e.pingspam(msg)
-	# elif msg.content.startswith("r reddit"): await e.reddit(msg)
+    async def on_message(self, message):
+        if message.author.bot:
+            return
+        await self.process_commands(message)
 
-client.run(secretToken)
+async def main():
+    client = ReggieBot()
+    client.remove_command('help')
+    load_dotenv()
+    await client.start(os.getenv("API_TOKEN"))
+
+asyncio.run(main())
