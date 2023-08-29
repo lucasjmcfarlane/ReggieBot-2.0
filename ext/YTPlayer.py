@@ -53,7 +53,9 @@ async def play(ctx, url=""):
         except:
             await skip(ctx)
 
-        coroutine.start()
+        try: coroutine.start()
+        except: print("Coroutine already running!")
+
         await ctx.message.add_reaction("👍")
 
     except Exception as e:
