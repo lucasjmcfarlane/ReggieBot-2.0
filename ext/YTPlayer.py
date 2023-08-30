@@ -31,14 +31,15 @@ ffmpeg_options = { #configure options for ffmpeg
 #Skip to the next song in queue if playback stops, or disconnect bot if nothing left in queue
 @tasks.loop(seconds=5)
 async def autoplay():
-    for key in voice_clients.keys(): #iterate through running voice clients
-
-        #if the voice client is NOT playing and is NOT paused:
-        if not voice_clients[key].is_playing() and not voice_clients[key].is_paused():
-            if len(queues[key]) > 0: #if the queue is NOT empty:
-                await skip(ctxs[key]) #play next track in queue.
-            else: #if the queue Is empty:
-                await stop(ctxs[key]) #disconnect the bot and delete corresponding data
+    try:
+        for key in voice_clients.keys(): #iterate through running voice clients
+            #if the voice client is NOT playing and is NOT paused:
+            if not voice_clients[key].is_playing() and not voice_clients[key].is_paused():
+                if len(queues[key]) > 0: #if the queue is NOT empty:
+                    await skip(ctxs[key]) #play next track in queue.
+                else: #if the queue Is empty:
+                    await stop(ctxs[key]) #disconnect the bot and delete corresponding data
+    except: pass
 
 #add a song to the queue
 @commands.command()
