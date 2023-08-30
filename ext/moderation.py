@@ -87,6 +87,9 @@ async def clear_error(ctx, error):
 async def pingspam(ctx, member: discord.Member):
      for i in range(5):
           await ctx.send(member.mention)
+@pingspam.error
+async def pingspam_error(ctx, error):
+	await ctx.reply("**You can only pingspam a server member!**")
 
 
 async def setup(bot):
