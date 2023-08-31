@@ -4,12 +4,10 @@ import random
 
 @commands.command()
 async def ppsize(ctx):
-	pp="8"
-	length=0
-	for i in range(random.randint(1,15)):
-		length+=1
-		pp+="="
+	length = random.randint(1,15)
 
+	pp="8"
+	for i in range(length): pp+="="
 	pp+="D\n"
 
 	if (length > 10):
