@@ -2,6 +2,10 @@ from discord.ext import commands, tasks
 import discord
 import asyncio
 import yt_dlp
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+import os
+from dotenv import load_dotenv
 
 voice_clients = {} #dictionary of voice clients where key is the voice channel id
 queues = {} #dictionary of queue arrays of ytdl data where key is the voice channel id
@@ -28,6 +32,12 @@ ffmpeg_options = { #configure options for ffmpeg
     'options': '-vn',
 }
 
+#load credentials for spotify
+load_dotenv()
+client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv("SPOTIFY_ID"), client_secret=os.getenv("SPOTIFY_SECRET"))
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+
 #Skip to the next song in queue if playback stops, or disconnect bot if nothing left in queue
 @tasks.loop(seconds=5)
 async def autoplay():
@@ -43,11 +53,19 @@ async def autoplay():
 
 #add a song to the queue
 @commands.command()
-async def play(ctx, url=""):
+async def play(ctx, *, url=""):
     try:
         #this is magic to me idk
         loop = asyncio.get_event_loop()
-        data = await loop.run_in_executor(None, lambda: ytdl.extract_info(url, download=False))
+
+        if"spotify.com" in url:
+            trackURI = url.split("/")[-1].split("?")[0]
+            url = sp.track(trackURI)["artists"][0]["name"] +" "+ sp.track(trackURI)["name"]
+            data = await loop.run_in_executor(None, lambda: ytdl.extract_info(f"ytsearch:{url}", download=False)['entries'][0])
+        elif "youtube.com" in url: #use the given url to play the video
+            data = await loop.run_in_executor(None, lambda: ytdl.extract_info(url, download=False))
+        else: #play the first youtube search result for the given input
+            data = await loop.run_in_executor(None, lambda: ytdl.extract_info(f"ytsearch:{url}", download=False)['entries'][0])
         
         #ensure dictionary for guild contains an array
         try: queue = queues[ctx.message.guild.id]
