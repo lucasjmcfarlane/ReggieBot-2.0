@@ -11,12 +11,19 @@ async def ppsize(ctx):
 	pp+="D\n"
 
 	if (length > 10):
-		pp+=" **NICE!**"
+		descrip=" **NICE!**"
 	elif (length>5 and length<=10):
-		pp+=" **Not too bad!**"
+		descrip=" **Not too bad!**"
 	else:
-		pp+=" **That's pretty rough...**"
+		descrip=" **That's pretty rough...**"
 	await ctx.send(pp)
+
+	embed = discord.Embed(
+		title = pp,
+		description = descrip,
+		colour = discord.Colour.pink()
+	)
+	await ctx.send(embed=embed)
 
 async def setup(bot):
 	bot.add_command(ppsize)
