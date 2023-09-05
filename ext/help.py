@@ -22,7 +22,7 @@ async def help(ctx):
 	embed.add_field(name="Mute", value="Mute the given member", inline=False)
 	embed.add_field(name="Unmute", value="Unmute the given member", inline=False)
 	embed.add_field(name="Deafen", value="Deafen the given member", inline=False)
-	embed.add_field(name="Undeafem", value="Undeafen the given member", inline=False)
+	embed.add_field(name="Undeafen", value="Undeafen the given member", inline=False)
 	embed.add_field(name="Disconnect", value="Disconnect the given member", inline=False)
 	embed.add_field(name="Move", value="Move the given member into your current voice channel", inline=False)
 	embed.add_field(name="Ban", value="Ban the given member", inline=False)

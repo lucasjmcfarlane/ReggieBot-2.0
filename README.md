@@ -15,42 +15,43 @@ If you discover any issues or have suggestions, please open a New Issue [HERE](h
 
 ## COMMANDS
 ### Bot prefix is "r "  
+### Type "r help" to list all commands
 ## GENERAL COMMANDS
 
-### R welcomespeech
+### welcomespeech
 Formatting: "r welcomespeech"   
 Gives the bot's welcome speech. Reggie introduces himself and shares the link to the GitGub repo.  
 
-### R hello  
+### hello  
 Formatting: "r hello"  
 Simply returns "Hi, My name is Reggie!"
 
-### R Github  
+### Github  
 Formatting: "r github"  
 Sends the link to the GitHub repository.  
 
 
-### R flipcoin  
+### Flipcoin  
 Formatting: "r flipcoin"  
 Flips a coin, randomly returning heads or tails.
 
-### R insult  
+### Insult  
 Formatting: "r insult 'optionally, pick a user to insult'"  
 Reggie will insult the user or chosen server member.
 
-### R Askreggie
+### Askreggie
 Formatting: "r askreggie 'your question'"  
 Ask reggie a question and get a randomised response.  
 
-### R Msgfromreggie
+### Msgfromreggie
 Formatting: "r msgfromreggie 'user' 'message'"  
 Sends a direct message to the chosen user.  
 
-### R lovecalc
+### Lovecalc
 Formatting: "r lovecalc 'user 1' 'user 2'  
 Calcualates the love between two server members.  
 
-### R ppsize
+### Ppsize
 NSFW  
 Formatting: "r ppsize 'optional user'"  
 Shows the users pp size.  
@@ -58,44 +59,44 @@ ___
 
 ## MODERATION COMMANDS
 
-### R mute
-Formatting: "r mute 'user'"
+### Mute
+Formatting: "r mute 'user'"  
 Mutes the chosen server member (if you have the required priveleges.)
 
-### R unmute
-Formatting: "r unmute 'user'"
+### Unmute
+Formatting: "r unmute 'user'"  
 Unmute the chosen server member (if you have the required priveleges.)
 
-### R deafen
+### Deafen
 Formatting: "r deafen 'user'", "r df '' "  
 Deafens the chosen server member (if you have the required priveleges)
 
-### R undeafen
-Formatting: "r undeafen 'user'"
+### Undeafen
+Formatting: "r undeafen 'user'"  
 Undeafen the chosen server member (if you have the required priveleges)
 
-### R disconnect
-Formatting: "r disconnect 'user'"
+### Disconnect
+Formatting: "r disconnect 'user'"  
 Disconnects the chosen server member (if you have the required priveleges.)  
 
-### R move
-Formatting: "r move 'user'"
+### Move
+Formatting: "r move 'user'"  
 Move the chosen server member to your current voice channel (if you have the required priveleges.)  
 
-### R ban  
+### Ban  
 Formatting: "r ban 'user' 'reason' "  
 Ban the chosen user  
 
-### R kick   
+### Kick   
 Formatting: "r kick 'user' 'reason' "  
 Kick the chosen user
 
-### R clear
+### Clear
 Formatting: "r clear 'number of messages'"  
 Clears the specified amount of messages from the current channel (if you have administrator priveleges.)  
 
-### R pingspam
-Formatting: "r pingspam 'user to ping'"
+### Pingspam
+Formatting: "r pingspam 'user to ping'"  
 pings the chosen user 5 times
 
 ___
@@ -103,21 +104,21 @@ ___
 ## YTPlayer Commands  
 
 ### Play
-Formatting: "r play 'YouTube link, Spotify link, or YouTube search query'"
+Formatting: "r play 'YouTube link, Spotify link, or YouTube search query'"  
 Add the given song to the play queue
 
 ### Pause
-Formatting: "r pause"
+Formatting: "r pause"  
 Pause the currently playing track
 
 ### Resume
-Formatting: "r resume"
+Formatting: "r resume"  
 Resume the currently playing track
 
 ### Skip
-Formatting: "r skip"
+Formatting: "r skip"  
 Skip to the next song in the queue
 
 ### Stop
-Formatting: "r stop"
+Formatting: "r stop"  
 Stop playback, delete the queue, and disconnect the bot
